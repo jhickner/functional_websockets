@@ -8,10 +8,10 @@ newWebSocketWithHandlers = ({url, error, open, close, message}) ->
   ws
 
 defaultOpts = url: "ws://echo.websocket.org/"
-            , errorFn: (ws, e) --> console.log "websocket error: #{e}"
-            , openFn:  (ws, e) --> console.log "socket opened!"
-            , closeFn: (ws, e) --> console.log "socket closed!"
-            , msgFn:   (ws, e) --> console.log "got data: #{e.data}"
+            , error: (ws, e) --> console.log "websocket error: #{e}"
+            , open:  (ws, e) --> console.log "socket opened!"
+            , close: (ws, e) --> console.log "socket closed!"
+            , message:   (ws, e) --> console.log "got data: #{e.data}"
 
 window.FWS =
   create: newWebSocketWithHandlers

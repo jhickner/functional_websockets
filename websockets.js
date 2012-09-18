@@ -23,16 +23,16 @@
   };
   defaultOpts = {
     url: "ws://echo.websocket.org/",
-    errorFn: curry$(function(ws, e){
+    error: curry$(function(ws, e){
       return console.log("websocket error: " + e);
     }),
-    openFn: curry$(function(ws, e){
+    open: curry$(function(ws, e){
       return console.log("socket opened!");
     }),
-    closeFn: curry$(function(ws, e){
+    close: curry$(function(ws, e){
       return console.log("socket closed!");
     }),
-    msgFn: curry$(function(ws, e){
+    message: curry$(function(ws, e){
       return console.log("got data: " + e.data);
     })
   };
