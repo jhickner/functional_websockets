@@ -1,9 +1,9 @@
-newWebSocketWithHandlers = ({url, errorFn, openFn, closeFn, msgFn}) ->
+newWebSocketWithHandlers = ({url, error, open, close, message}) ->
   ws = new WebSocket url
-  if errorFn? then ws.addEventListener "error" (errorFn ws)
-  if openFn? then ws.addEventListener "open" (openFn ws)
-  if closeFn? then ws.addEventListener "close" (closeFn ws)
-  if msgFn? then ws.addEventListener "message" (msgFn ws)
+  if errorFn? then ws.addEventListener "error" (error ws)
+  if openFn? then ws.addEventListener "open" (open ws)
+  if closeFn? then ws.addEventListener "close" (close ws)
+  if msgFn? then ws.addEventListener "message" (message ws)
   window.addEventListener "unload" (-> ws.close!)
   ws
 
