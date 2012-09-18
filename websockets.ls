@@ -13,6 +13,6 @@ defaultOpts = url: "ws://echo.websocket.org/"
             , closeFn: (ws, e) --> console.log "socket closed!"
             , msgFn:   (ws, e) --> console.log "got data: #{e.data}"
 
-window.ws =
+window.FWS =
   create: newWebSocketWithHandlers
   defaultOpts : defaultOpts

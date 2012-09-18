@@ -1,20 +1,20 @@
 (function(){
   var newWebSocketWithHandlers, defaultOpts;
   newWebSocketWithHandlers = function(arg$){
-    var url, errorFn, openFn, closeFn, msgFn, ws;
-    url = arg$.url, errorFn = arg$.errorFn, openFn = arg$.openFn, closeFn = arg$.closeFn, msgFn = arg$.msgFn;
+    var url, error, open, close, message, ws;
+    url = arg$.url, error = arg$.error, open = arg$.open, close = arg$.close, message = arg$.message;
     ws = new WebSocket(url);
-    if (errorFn != null) {
-      ws.addEventListener("error", errorFn(ws));
+    if (typeof errorFn != 'undefined' && errorFn !== null) {
+      ws.addEventListener("error", error(ws));
     }
-    if (openFn != null) {
-      ws.addEventListener("open", openFn(ws));
+    if (typeof openFn != 'undefined' && openFn !== null) {
+      ws.addEventListener("open", open(ws));
     }
-    if (closeFn != null) {
-      ws.addEventListener("close", closeFn(ws));
+    if (typeof closeFn != 'undefined' && closeFn !== null) {
+      ws.addEventListener("close", close(ws));
     }
-    if (msgFn != null) {
-      ws.addEventListener("message", msgFn(ws));
+    if (typeof msgFn != 'undefined' && msgFn !== null) {
+      ws.addEventListener("message", message(ws));
     }
     window.addEventListener("unload", function(){
       return ws.close();
@@ -36,7 +36,7 @@
       return console.log("got data: " + e.data);
     })
   };
-  window.ws = {
+  window.FWS = {
     create: newWebSocketWithHandlers,
     defaultOpts: defaultOpts
   };
