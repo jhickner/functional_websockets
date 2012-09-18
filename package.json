@@ -5,7 +5,7 @@
   "jam": {
     "dependencies": {},
     "main": "websockets.js",
-    "include": ["websockets.ls", "websockets.js"]
+    "include": ["websockets.ls", "websockets.js", "README.md"]
   },
   "maintainers": [
     {
