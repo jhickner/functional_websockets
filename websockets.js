@@ -4,16 +4,16 @@
     var url, error, open, close, message, ws;
     url = arg$.url, error = arg$.error, open = arg$.open, close = arg$.close, message = arg$.message;
     ws = new WebSocket(url);
-    if (typeof errorFn != 'undefined' && errorFn !== null) {
+    if (error != null) {
       ws.addEventListener("error", error(ws));
     }
-    if (typeof openFn != 'undefined' && openFn !== null) {
+    if (open != null) {
       ws.addEventListener("open", open(ws));
     }
-    if (typeof closeFn != 'undefined' && closeFn !== null) {
+    if (close != null) {
       ws.addEventListener("close", close(ws));
     }
-    if (typeof msgFn != 'undefined' && msgFn !== null) {
+    if (message != null) {
       ws.addEventListener("message", message(ws));
     }
     window.addEventListener("unload", function(){
